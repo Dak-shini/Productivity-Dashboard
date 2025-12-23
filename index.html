@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Productivity Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="app-header">
+    <h1>🌊 Smart Productivity</h1>
+    <div class="header-actions">
+      <button id="themeToggle">🌙</button>
+      <button id="focusToggle">🎯 Focus</button>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <!-- Task Input -->
+    <section class="task-input">
+      <input id="taskInput" type="text" placeholder="What needs focus today?" />
+      <select id="prioritySelect">
+        <option value="urgent-important">Urgent & Important</option>
+        <option value="not-urgent-important">Not Urgent & Important</option>
+        <option value="urgent-not-important">Urgent & Not Important</option>
+        <option value="not-urgent-not-important">Not Urgent & Not Important</option>
+      </select>
+      <button id="addTaskBtn">Add</button>
+    </section>
+
+    <!-- Progress -->
+    <section class="progress-section">
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+      <div class="progress-info">
+        <span id="progressText">0% Completed</span>
+        <span class="streak">🔥 <span id="streakCount">0</span>-day streak</span>
+      </div>
+    </section>
+
+    <!-- Matrix -->
+    <section class="matrix">
+      <div class="matrix-column" data-priority="urgent-important">
+        <h3>Urgent & Important</h3>
+        <ul class="task-list"></ul>
+      </div>
+
+      <div class="matrix-column" data-priority="not-urgent-important">
+        <h3>Not Urgent & Important</h3>
+        <ul class="task-list"></ul>
+      </div>
+
+      <div class="matrix-column" data-priority="urgent-not-important">
+        <h3>Urgent & Not Important</h3>
+        <ul class="task-list"></ul>
+      </div>
+
+      <div class="matrix-column" data-priority="not-urgent-not-important">
+        <h3>Not Urgent & Not Important</h3>
+        <ul class="task-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

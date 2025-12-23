@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #e6f7f5;
+  --card: rgba(255, 255, 255, 0.75);
+  --text: #043f3a;
+  --muted: #5fa5a0;
+  --primary: #0fb9b1;
+  --border: rgba(15, 185, 177, 0.25);
+  --shadow: 0 20px 40px rgba(15, 185, 177, 0.2);
+}
+
+body.dark {
+  --bg: #021f1e;
+  --card: rgba(3, 45, 43, 0.75);
+  --text: #e6fffa;
+  --muted: #7dd3c7;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(circle at top, #b2f5ea, var(--bg));
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Header */
+.app-header {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Dashboard */
+.dashboard {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Input */
+.task-input {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr auto;
+  gap: 0.75rem;
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.task-input input,
+.task-input select {
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.task-input button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+}
+
+/* Progress */
+.progress-section {
+  margin: 1.5rem 0;
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.progress-bar {
+  height: 10px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+#progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #0fb9b1, #22d3c5);
+  width: 0%;
+}
+
+.progress-info {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Matrix */
+.matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.matrix-column {
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease;
+}
+
+.matrix-column:hover {
+  transform: translateY(-6px);
+}
+
+/* Tasks */
+.task {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  cursor: grab;
+}
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.task:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  color: #ef4444;
+  transform: scale(1.1);
+}
+
+
+.task.completed {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+/* Focus Mode */
+body.focus .matrix-column {
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+body.focus .matrix-column.active {
+  opacity: 1;
+  pointer-events: auto;
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+/* Empty */
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .matrix {
+    grid-template-columns: 1fr;
+  }
+  .task-input {
+    grid-template-columns: 1fr;
+  }
+}
